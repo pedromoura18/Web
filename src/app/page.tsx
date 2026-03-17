@@ -1,17 +1,25 @@
+'use client'
+
 import { Button, CardBody, CardFooter, CardRoot, Flex, Heading, HStack, Strong, VStack } from "@chakra-ui/react";
 import NextLink from "next/link"
 import { Link as ChakraLink } from "@chakra-ui/react"
 import { Image as ChakraImage } from "@chakra-ui/react"
 import NextImage from "next/image"
-import { LuArrowRight, LuCar, LuShield, LuSparkle, LuSparkles, LuStar } from "react-icons/lu";
+import { LuArrowRight, LuCar, LuClock, LuShield, LuSparkle, LuSparkles, LuStar } from "react-icons/lu";
 import { Icon } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import car from "../../public/assets/car.jpeg"
 import { ColorModeButton } from "@/components/ui/color-mode";
 import { Tag } from "@/components/ui/tag";
 import { Card } from "@/components/home/card";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  function handleNavigationToSchedule(){
+    router.push("/agendar");
+  }
 
   return (
       <>
@@ -74,11 +82,18 @@ export default function Home() {
           </Text>
 
           <HStack gap={4}>
-            <Button rounded={"lg"} bgColor={"yellow.400"}>
-              <LuCar />Agendar Agora</Button>
-
-            <Button rounded={"lg"}>Ver Serviços
+            <Button rounded={"lg"} bgColor={"yellow.400"} asChild>
+              <a href="/agendar">
+              <LuClock  
+               />Agendar Agora
+               </a>
+               </Button> 
+          
+            <Button rounded={"lg"} asChild>
+              <a href="/servicos">
+              Ver Serviços
               <LuArrowRight />
+              </a>
             </Button>
           </HStack>
         </VStack> 
@@ -103,7 +118,7 @@ export default function Home() {
              <Card
               icon={<LuShield color={"black"}/>}
               title="Vitrificação"
-              description="Proteção cerâmica de longa duração que mantém seu carro impecável por meses"
+              description="Proteção cerâmica de longa duração que mantém seu carro i mpecável por meses"
               textFooter="A partir de R$800.00"
               />
 
@@ -121,8 +136,8 @@ export default function Home() {
               />
           </HStack>
 
-          <Button colorPalette="yellow" rounded={"lg"}>
-          Agendar Serviço
+          <Button colorPalette="yellow" rounded={"lg"} asChild>
+          <a href="/agendar">Agendar Serviço</a>
           <LuArrowRight/>
           </Button>
         </VStack>
