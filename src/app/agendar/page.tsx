@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 "use client"
 
 import { Button, ButtonGroup, Heading, Steps, Text, useSteps, VStack } from "@chakra-ui/react";
